@@ -10,14 +10,12 @@
   let quotes = [];
 
   axios
-    .get("http://localhost:3000/api/v1/quotes")
-    // .get("https://bitprice.vercel.app/api/v1/quotes")
+    // .get("http://localhost:3000/api/v1/quotes")
+    .get("https://bitprice.vercel.app/api/v1/quotes")
     .then( payload => {
       quotes = payload.data.quotes;
 
       quotes.sort( (a,b) => a.timestamp - b.timestamp )
-
-      console.log(quotes)
 
     });
 
