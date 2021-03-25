@@ -60,7 +60,7 @@ function handleRowClick(i) {
             <td> { new Date(quote.timestamp).toISOString().split('T')[0] + "T00:00:00" }   </td>
             <td> { day_names[ new Date(quote.timestamp).getDay()  ]   } </td>
             <td> {quote.price}   </td>
-            <td> { ( i === 0 ) ?  'N/A' : (quotes[i].price - quotes[i-1].price).toFixed(2)   }     </td>
+            <td> { ( i === 0 ) ?  'N/A' : (quotes[i].price - quotes[i-1].price)   }     </td>
             <td class="uk-align-center"> 
               {#if i === 0} 
                 N/A
