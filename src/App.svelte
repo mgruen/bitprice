@@ -11,20 +11,21 @@
     "Saturday",
   ];
 
-  let previous_price_click = 0;
+  let previous_price_click; 
 
   let quote_clicked;
 
   let quotes = [];
 
   axios
-    // .get("http://localhost:3000/api/v1/quotes")
-    .get("https://btcprices.vercel.app/api/v1/quotes")
+    .get("http://localhost:3000/api/v1/quotes")
+    // .get("https://btcprices.vercel.app/api/v1/quotes")
     .then((payload) => {
       quotes = payload.data.quotes;
 
       quotes.sort((a, b) => a.timestamp - b.timestamp);
     });
+  
 
   function handleRowClick(i) {
  
@@ -40,6 +41,7 @@
       });
 
     previous_price_click = quotes[i].price;
+
   }
 </script>
 
@@ -71,15 +73,15 @@
             <td>
               {new Date(quote.timestamp).toISOString().split("T")[0] + "T00:00:00"}
             </td>
-            <td> {day_names[new Date(quote.timestamp).getDay()]} </td>
+            <td> {day_names[new Date(quote.timestamp).getUTCDay()]  } </td>
             <td> {quote.price} </td>
-            <td> {i === 0 ? "N/A" : quotes[i].price - quotes[i - 1].price} </td>
+            <td> {i === 0 ? "N/A" : (quotes[i].price - quotes[i - 1].price) } </td>
             <td class="uk-align-center">
               {#if i === 0}
                 N/A
-              {:else if quotes[i].price - quotes[i - 1].price > 0}
+              {:else if (quotes[i].price - quotes[i - 1].price) > 0}
                 <span style="color:green" uk-icon="arrow-up" />
-              {:else if quotes[i].price - quotes[i - 1].price < 0}
+              {:else if (quotes[i].price - quotes[i - 1].price) < 0}
                 <span style="color:red" uk-icon="arrow-down" />
               {:else}
                 <span uk-icon="minus" />

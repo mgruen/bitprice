@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   const query_quotes = await axios.get(url)
     .catch(error => res.status(500).json({ status: "error", error }));
 
-  const daily_quotes = query_quotes.data.data.history.filter(x => (new Date(x.timestamp)).getHours() == 0)
+  const daily_quotes = query_quotes.data.data.history.filter(x => (new Date(x.timestamp)).getHours() === 0) //? Keep only the 0th-hour quotes, UTC
 
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
