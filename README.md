@@ -1,4 +1,11 @@
+## Demo
+
+https://btcprices.vercel.app
+
+
 ## Get started
+
+Clone the Repo
 
 Install the dependencies...
 
