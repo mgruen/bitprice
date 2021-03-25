@@ -18,8 +18,8 @@
   let quotes = [];
 
   axios
-    .get("http://localhost:3000/api/v1/quotes")
-    // .get("https://btcprices.vercel.app/api/v1/quotes")
+    // .get("http://localhost:3000/api/v1/quotes")
+    .get("https://btcprices.vercel.app/api/v1/quotes")
     .then((payload) => {
       quotes = payload.data.quotes;
 
