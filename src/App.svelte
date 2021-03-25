@@ -9,6 +9,10 @@
     .then( payload => {
       quotes = payload.data.quotes;
 
+      quotes.sort( (a,b) => a.timestamp - b.timestamp )
+
+
+
       console.log(quotes)
 
     });
@@ -31,8 +35,8 @@
       <tbody>
         {#each quotes as quote}
           <tr class="uk-text-left">
-            <td></td>
-            <td></td>
+            <td> {quote.timestamp} </td>
+            <td> { new Date(quote.timestamp)}   </td>
             <td></td>
             <td></td>
             <td></td>
